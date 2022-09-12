@@ -49,7 +49,7 @@
         content="2022-08-21">
       <meta 
         property="og:article:modified_time" 
-        content="2022-08-22">
+        content="2022-09-12">
       <meta 
         property="og:article:author" 
         content="明.">
@@ -377,15 +377,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/CloudFlare/" 
-        title="CloudFlare">
-        <div class="tags-list-item">CloudFlare</div>
-      </a>
-    
-      <a 
         href="/tags/Gost/" 
         title="Gost">
         <div class="tags-list-item">Gost</div>
+      </a>
+    
+      <a 
+        href="/tags/CloudFlare/" 
+        title="CloudFlare">
+        <div class="tags-list-item">CloudFlare</div>
       </a>
     
   </div>
@@ -423,7 +423,7 @@
     
     
       <span class="dot"></span>
-      <span>181 字</span>
+      <span>294 字</span>
     
   </div>
   
@@ -459,21 +459,28 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+    <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
 <li>一台能连接Github的VPS.</li>
 <li>一个域名.</li>
-</ol>
+</ul>
 <h2 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h2><p>本文中的Gost为v2版本.</p>
 <h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><p>可以前往<a target="_blank" rel="noopener" href="https://github.com/ginuerzh/gost/releases">Gost releases</a>获取最新版链接.</p>
-<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.3/gost-linux-amd64-2.11.3.gz</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.3.gz</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.3 gost</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line"></span><br><span class="line">sudo nohup ./gost -L=mwss://username:password\@:443?probe_resist=code:404\&amp;cert=....../fullchain.pem\&amp;key=....../privkey.pem</span><br></pre>
+<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.4/gost-linux-amd64-2.11.4.gz</span><br><span class="line">#下载Gost源文件</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.4.gz</span><br><span class="line">#解压源文件</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.4 gost</span><br><span class="line">#重命名为gost，方便后续使用命令</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line">#使之可执行</span><br><span class="line"></span><br><span class="line">sudo nohup ./gost -L=mwss://username:password\@:443?probe_resist=code:404\&amp;cert=....../fullchain.pem\&amp;key=....../privkey.pem</span><br><span class="line">#在443端口上运行一个带有多路复用特性的Websocket Over Tls隧道，并配置好用户名/密码与防御探测</span><br></pre>
 
 <h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>nohup：防止结束SSH后Gost程序终止.</p>
 <p>probe_resist：防御探测，具体可见<a target="_blank" rel="noopener" href="https://v2.gost.run/probe_resist/">Gost Wiki</a>.</p>
 <p>用户名&#x2F;密码及证书地址记得替换.</p>
 <h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><pre class="highlight"><span class="line">./gost -L socks://:1080 -F mwss://username:password@example.com:443</span><br></pre>
 
+<ul>
+<li>推荐在WSL子系统中使用</li>
+<li>规则可以在Windows中使用Clash来弥补<ul>
+<li>如果你是在WSL子系统中运行Gost Client，在CFW中使用的地址为<code>localhost:1080</code></li>
+</ul>
+</li>
+</ul>
 <h1 id="CloudFlare-CDN"><a href="#CloudFlare-CDN" class="headerlink" title="CloudFlare CDN"></a>CloudFlare CDN</h1><p>在Dashboard中设置好DNS Record并将Proxy status设为Proxied即可.</p>
-<p>Note: 套CloudFlare后可能会导致速度变慢，若非线路不佳可不开启Proxied.</p>
+<p><em>Note: 套CloudFlare后可能会导致速度变慢，若非线路不佳可不开启Proxied.</em></p>
 
   </div>
   <div>
