@@ -18,12 +18,12 @@
   <link 
     rel="icon" 
     href="https://bafybeievw7hodllf3a6mtgaugglwxzd226s4nzl2dl43cpg64almhjhtxy.ipfs.dweb.link/Logo.jpg">
-  <title>通过Certbot获取TLS证书</title>
+  <title>获取TLS证书</title>
   
     
       <meta 
         property="og:title" 
-        content="通过Certbot获取TLS证书">
+        content="获取TLS证书">
     
     
       <meta 
@@ -49,7 +49,7 @@
         content="2022-09-13">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-14">
+        content="2022-09-19">
       <meta 
         property="og:article:author" 
         content="明.">
@@ -57,7 +57,7 @@
         
           <meta 
             property="og:article:tag" 
-            content="Certbot">
+            content="CloudFlare">
         
           <meta 
             property="og:article:tag" 
@@ -321,13 +321,13 @@
   <a 
     class="author-categories-count" 
     href="/categories">
-    <span>1</span>
+    <span>2</span>
     <span>分类</span>
   </a>
   <a 
     class="author-tags-count" 
     href="/tags">
-    <span>5</span>
+    <span>4</span>
     <span>标签</span>
   </a>
 </div>
@@ -344,7 +344,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Let%E2%80%99s-Encrypt-%E8%AF%81%E4%B9%A6"><span class="toc-text">Let’s Encrypt 证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-Origin-%E8%AF%81%E4%B9%A6"><span class="toc-text">CloudFlare Origin 证书</span></a></li></ol>
       </div>
     </article>
   
@@ -366,6 +366,13 @@
         </div>
       </a>
     
+      <a href="/categories/202209/">
+        <div class="categories-list-item">
+          202209
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
   </div>
 </div>
   </article>
@@ -381,21 +388,15 @@
   <div class="tags-list">
     
       <a 
-        href="/tags/Gost/" 
-        title="Gost">
-        <div class="tags-list-item">Gost</div>
-      </a>
-    
-      <a 
         href="/tags/CloudFlare/" 
         title="CloudFlare">
         <div class="tags-list-item">CloudFlare</div>
       </a>
     
       <a 
-        href="/tags/Certbot/" 
-        title="Certbot">
-        <div class="tags-list-item">Certbot</div>
+        href="/tags/TLS/" 
+        title="TLS">
+        <div class="tags-list-item">TLS</div>
       </a>
     
       <a 
@@ -405,9 +406,9 @@
       </a>
     
       <a 
-        href="/tags/TLS/" 
-        title="TLS">
-        <div class="tags-list-item">TLS</div>
+        href="/tags/Gost/" 
+        title="Gost">
+        <div class="tags-list-item">Gost</div>
       </a>
     
   </div>
@@ -422,7 +423,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      通过Certbot获取TLS证书
+      获取TLS证书
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -434,9 +435,18 @@
       <span>2022-09-13</span>
     </time>
     
+      <span class="dot"></span>
+      
+        <a 
+          href="/categories/202209/" 
+          class="post-meta-link">
+          202209
+        </a>
+      
+    
     
       <span class="dot"></span>
-      <span>56 字</span>
+      <span>119 字</span>
     
   </div>
   
@@ -451,9 +461,9 @@
         
           
           <a 
-            href="/tags/Certbot/" 
+            href="/tags/CloudFlare/" 
             class="post-meta-link">
-            Certbot
+            CloudFlare
           </a>
         
           
@@ -481,12 +491,16 @@
   <div 
     id="section" 
     class="post-content">
-    <ul>
-<li><p>以Debian为例</p>
-<pre class="highlight"><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt install snapd</span><br><span class="line"></span><br><span class="line">sudo snap install --classic certbot</span><br><span class="line"></span><br><span class="line">sudo ln -s /snap/bin/certbot /usr/bin/certbot</span><br><span class="line"></span><br><span class="line">sudo certbot certonly --standalone</span><br><span class="line"></span><br><span class="line">sudo certbot renew --dry-run</span><br></pre>
+    <h1 id="Let’s-Encrypt-证书"><a href="#Let’s-Encrypt-证书" class="headerlink" title="Let’s Encrypt 证书"></a>Let’s Encrypt 证书</h1><ul>
+<li><p>以Debian为例，通过certbot申请证书.</p>
+<pre class="highlight"><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt install snapd</span><br><span class="line"></span><br><span class="line">sudo snap install --classic certbot</span><br><span class="line"></span><br><span class="line">sudo ln -s /snap/bin/certbot /usr/bin/certbot</span><br><span class="line"></span><br><span class="line">sudo certbot certonly --standalone</span><br><span class="line"># 申请证书</span><br><span class="line"></span><br><span class="line">sudo certbot renew --dry-run</span><br><span class="line"># 测试自动更新证书</span><br></pre>
 </li>
-<li><p>完成了，现在你的证书应该处于</p>
+<li><p>完成了，现在你的证书应该处于:</p>
 <pre class="highlight"><span class="line">/etc/letsencrypt/live/example.com/fullchain.pem</span><br><span class="line">/etc/letsencrypt/live/example.com/privkey.pem</span><br></pre></li>
+</ul>
+<h1 id="CloudFlare-Origin-证书"><a href="#CloudFlare-Origin-证书" class="headerlink" title="CloudFlare Origin 证书"></a>CloudFlare Origin 证书</h1><ul>
+<li>注意,<strong>该证书只能被CloudFlare识别为可信</strong>,用于CDN与源站之间.</li>
+<li>Dashboard—SSL&#x2F;TLS—Orgin Server即可生成证书.</li>
 </ul>
 
   </div>
@@ -581,7 +595,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Let%E2%80%99s-Encrypt-%E8%AF%81%E4%B9%A6"><span class="toc-text">Let’s Encrypt 证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-Origin-%E8%AF%81%E4%B9%A6"><span class="toc-text">CloudFlare Origin 证书</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -595,7 +609,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Let%E2%80%99s-Encrypt-%E8%AF%81%E4%B9%A6"><span class="toc-text">Let’s Encrypt 证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-Origin-%E8%AF%81%E4%B9%A6"><span class="toc-text">CloudFlare Origin 证书</span></a></li></ol>
     </article>
   
   
@@ -611,7 +625,7 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-09-13</div>
-        <a href="/2022/09/13/TLS-Cert/"><div class="recent-posts-item-content">通过Certbot获取TLS证书</div></a>
+        <a href="/2022/09/13/TLS-Cert/"><div class="recent-posts-item-content">获取TLS证书</div></a>
       </div>
     
       <div class="recent-posts-item">
