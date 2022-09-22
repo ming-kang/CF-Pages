@@ -18,12 +18,12 @@
   <link 
     rel="icon" 
     href="https://bafybeievw7hodllf3a6mtgaugglwxzd226s4nzl2dl43cpg64almhjhtxy.ipfs.dweb.link/Logo.jpg">
-  <title>通过Gost建立Websocket Tunnel</title>
+  <title>通过Gost建立Wss/Https代理</title>
   
     
       <meta 
         property="og:title" 
-        content="通过Gost建立Websocket Tunnel">
+        content="通过Gost建立Wss/Https代理">
     
     
       <meta 
@@ -49,7 +49,7 @@
         content="2022-08-21">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-14">
+        content="2022-09-22">
       <meta 
         property="og:article:author" 
         content="明.">
@@ -340,7 +340,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
       </div>
     </article>
   
@@ -419,7 +419,7 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      通过Gost建立Websocket Tunnel
+      通过Gost建立Wss/Https代理
     </h1>
   </header>
   <div class="post-meta post-show-meta">
@@ -442,7 +442,7 @@
     
     
       <span class="dot"></span>
-      <span>298 字</span>
+      <span>345 字</span>
     
   </div>
   
@@ -483,13 +483,28 @@
 <li>一个域名.</li>
 </ul>
 <h2 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h2><p>本文中的Gost为v2版本.</p>
-<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><p>可以前往<a target="_blank" rel="noopener" href="https://github.com/ginuerzh/gost/releases">Gost releases</a>获取最新版链接.</p>
-<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.4/gost-linux-amd64-2.11.4.gz</span><br><span class="line">#下载Gost源文件</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.4.gz</span><br><span class="line">#解压源文件</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.4 gost</span><br><span class="line">#重命名为gost，方便后续使用命令</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line">#使之可执行</span><br><span class="line"></span><br><span class="line">sudo nohup ./gost -L=mwss://username:password@:443?probe_resist=code:404?cert=/path/to/your/cert/file&amp;key=/path/to/your/key/file</span><br><span class="line">#在443端口上运行一个带有多路复用特性的Websocket Over Tls隧道，并配置好用户名/密码与防御探测</span><br></pre>
+<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><h2 id="下载Gost"><a href="#下载Gost" class="headerlink" title="下载Gost."></a>下载Gost.</h2><blockquote>
+<p>可以前往<a target="_blank" rel="noopener" href="https://github.com/ginuerzh/gost/releases">Gost releases</a>获取最新版链接.</p>
+</blockquote>
+<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.4/gost-linux-amd64-2.11.4.gz</span><br><span class="line">#下载Gost源文件</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.4.gz</span><br><span class="line">#解压源文件</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.4 gost</span><br><span class="line">#重命名为gost，方便后续使用命令</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line">#使之可执行</span><br></pre>
 
-<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>nohup：防止结束SSH后Gost程序终止.</p>
-<p>probe_resist：防御探测，具体可见<a target="_blank" rel="noopener" href="https://v2.gost.run/probe_resist/">Gost Wiki</a>.</p>
-<p>用户名&#x2F;密码及证书地址记得替换.</p>
-<h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><pre class="highlight"><span class="line">./gost -L socks://:1080 -F mwss://username:password@example.com:443</span><br></pre>
+<h2 id="设置Https代理"><a href="#设置Https代理" class="headerlink" title="设置Https代理"></a>设置Https代理</h2><pre class="highlight"><span class="line">sudo nohup ./gost -L=https://username:password@:443?probe_resist=code:404\?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br></pre>
+
+<h2 id="设置Websocket-TLS隧道"><a href="#设置Websocket-TLS隧道" class="headerlink" title="设置Websocket+TLS隧道"></a>设置Websocket+TLS隧道</h2><pre class="highlight"><span class="line">sudo nohup ./gost -L=mwss://username:password@:443?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br></pre>
+
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><ul>
+<li><p>nohup：防止结束SSH后Gost程序终止.</p>
+</li>
+<li><p>probe_resist：防御探测，具体可见<a target="_blank" rel="noopener" href="https://v2.gost.run/probe_resist/">Gost Wiki</a>.</p>
+</li>
+<li><p>用户名&#x2F;密码及证书地址记得替换.</p>
+</li>
+</ul>
+<h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><h2 id="Https代理"><a href="#Https代理" class="headerlink" title="Https代理"></a>Https代理</h2><p>可以直接在大部分软件中使用.</p>
+<p>在clash中配置文件为：</p>
+<pre class="highlight"><span class="line">- &#123;name: &quot;Name&quot;, server: example.com, port: 443, type: http, username: &quot;username&quot;, password: &quot;password&quot;, tls: true &#125;</span><br></pre>
+
+<h2 id="Websocket-TLS隧道"><a href="#Websocket-TLS隧道" class="headerlink" title="Websocket+TLS隧道"></a>Websocket+TLS隧道</h2><pre class="highlight"><span class="line">./gost -L socks://:1080 -F mwss://username:password@example.com:443</span><br></pre>
 
 <ul>
 <li>推荐在WSL子系统中使用.</li>
@@ -596,7 +611,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -610,7 +625,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
     </article>
   
   
@@ -631,7 +646,7 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2022-08-21</div>
-        <a href="/2022/08/21/Gost-Tunnel/"><div class="recent-posts-item-content">通过Gost建立Websocket Tunnel</div></a>
+        <a href="/2022/08/21/Gost-Tunnel/"><div class="recent-posts-item-content">通过Gost建立Wss/Https代理</div></a>
       </div>
     
   </div>
