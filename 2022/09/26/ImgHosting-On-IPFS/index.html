@@ -520,9 +520,9 @@
     id="section" 
     class="post-content">
     <blockquote>
-<p>之前一直在用 <a href="picgo.github.io/PicGo-Doc">Picgo</a>+<a href="github.com">GitHub</a> 的方式托管图片，但是感觉不太好(其实就是想折腾)，于是找了一下其他自建图床的办法.</p>
+<p>之前一直在用 <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc">Picgo</a>+<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> 的方式托管图片，但是感觉不太好(其实就是想折腾)，于是找了一下其他自建图床的办法.</p>
 </blockquote>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><a href="ipfs.io">IPFS</a>的原理与BT类似，本质上都是P2P连接.</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><a target="_blank" rel="noopener" href="https://ipfs.io/">IPFS</a>的原理与BT类似，本质上都是P2P连接.</p>
 <p>但是IPFS可以通过各类公开网关直接访问其中的文件，格式为：</p>
 <pre class="highlight"><span class="line">[IPFS Gateway]/ipfs/[CID v0]</span><br><span class="line"></span><br><span class="line">[CID v1].ipfs.[IPFS Gateway]</span><br></pre>
 
@@ -538,7 +538,7 @@
 <li>若本地取消分享且其他节点没有备份，可能会在下一次自动删除中被清理掉，从而无法访问.</li>
 </ol>
 <p>对于这两个问题，我们可以使用第三方托管平台解决.</p>
-<p>这里我们使用 <a href="web3.storage">web3.storage</a>(以下简称<em>w3s</em>) 提供的服务.</p>
+<p>这里我们使用 <a target="_blank" rel="noopener" href="https://web3.storage/">web3.storage</a>(以下简称<em>w3s</em>) 提供的服务.</p>
 <blockquote>
 <p>提供类似上传服务的网站还有很多，可以自行搜索.</p>
 </blockquote>
@@ -548,7 +548,7 @@
 <blockquote>
 <p>每个Token带有1TB容量，一般人一个就足够了吧qwq</p>
 </blockquote>
-<p>然后前往 <a href="web3.storage/tokens/?create=true">Token</a> 界面，输入Token名称以生成.</p>
+<p>然后前往 <a target="_blank" rel="noopener" href="https://web3.storage/tokens/?create=true">Token</a> 界面，输入Token名称以生成.</p>
 <p><img src="https://img.anemo.top/Img/Token-w3s.jpg" alt="Token-w3s" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://img.anemo.top/Img/Token-w3s.jpg" class="lozad post-image"></p>
 <p>这里将Token复制好，下一步需要用到.</p>
 <h2 id="w3s-Cli"><a href="#w3s-Cli" class="headerlink" title="w3s Cli"></a>w3s Cli</h2><p>通过网站上传文件无疑是很麻烦的，所以我们选择使用Cli工具，在终端中操作</p>
@@ -569,7 +569,7 @@
 <p>若你想增添TEST2.jpg、TEST3.jpg……</p>
 <p>只需要重复第一步与第三步即可.</p>
 <h1 id="绑定域名-可选"><a href="#绑定域名-可选" class="headerlink" title="绑定域名 [可选]"></a>绑定域名 [可选]</h1><p>虽然这个时候已经能用了，但是IPNS ID那么长，看起来就不舒服 (bushi)</p>
-<p>所以我们可以借助 <a href="dnslink.org/">DNSlink</a> 功能，从我们自己的域名访问IPFS服务.</p>
+<p>所以我们可以借助 <a target="_blank" rel="noopener" href="https://dnslink.org/">DNSlink</a> 功能，从我们自己的域名访问IPFS服务.</p>
 <p>首先我们要选定一个网关(可以在附录寻找)，并且设置好CNAME接入.</p>
 <ul>
 <li>假设你在使用 a.example.com</li>
@@ -582,16 +582,16 @@
 <p><img src="https://img.anemo.top/Img/DNSlink2.jpg" alt="DNSlink2" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://img.anemo.top/Img/DNSlink2.jpg" class="lozad post-image"></p>
 <p>到这里就已经完成咯</p>
 <p>你现在可以通过 <strong>a.example.com&#x2F;Img&#x2F;[FileName]</strong> 来访问图片.</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a href="ipfs.io">IPFS官方网关</a></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a target="_blank" rel="noopener" href="https://ipfs.io/">IPFS官方网关</a></p>
 <blockquote>
 <p>在大陆无法访问</p>
 </blockquote>
-<p><a href="cf-ipfs.io">Cloudflare网关</a></p>
-<p><a href="w3s.link">w3s网关</a></p>
+<p><a target="_blank" rel="noopener" href="https://cf-ipfs.io/">Cloudflare网关</a></p>
+<p><a target="_blank" rel="noopener" href="https://w3s.link/">w3s网关</a></p>
 <blockquote>
 <p>上传完文件后，可以试着先通过w3s网关访问一次，让更多的服务器缓存到你的文件.</p>
 </blockquote>
-<p><a href="dweb.link">Dweb网关</a></p>
+<p><a target="_blank" rel="noopener" href="https://dweb.link/">Dweb网关</a></p>
 
   </div>
   <div>
