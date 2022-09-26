@@ -18,17 +18,17 @@
   <link 
     rel="icon" 
     href="/img.anemo.top/Img/Logo.jpg">
-  <title>通过Gost建立Wss/Https代理</title>
+  <title>ImgHosting-On-IPFS</title>
   
     
       <meta 
         property="og:title" 
-        content="通过Gost建立Wss/Https代理">
+        content="ImgHosting-On-IPFS">
     
     
       <meta 
         property="og:url" 
-        content="https://blog.anemo.top/2022/08/21/Gost-Tunnel/index.html">
+        content="https://blog.anemo.top/2022/09/26/ImgHosting-On-IPFS/index.html">
     
     
       <meta 
@@ -46,10 +46,10 @@
         content="article">
       <meta 
         property="og:article:published_time" 
-        content="2022-08-21">
+        content="2022-09-26">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-22">
+        content="2022-09-26">
       <meta 
         property="og:article:author" 
         content="明.">
@@ -57,11 +57,19 @@
         
           <meta 
             property="og:article:tag" 
-            content="Gost">
+            content="Cloudflare">
         
           <meta 
             property="og:article:tag" 
-            content="CloudFlare">
+            content="IPFS">
+        
+          <meta 
+            property="og:article:tag" 
+            content="ImgHosting">
+        
+          <meta 
+            property="og:article:tag" 
+            content="Web3">
         
       
     
@@ -340,7 +348,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPFS%E9%83%A8%E5%88%86"><span class="toc-text">IPFS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Token"><span class="toc-text">w3s Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Cli"><span class="toc-text">w3s Cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="toc-text">实际使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89"><span class="toc-text">绑定域名 [可选]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol></li></ol>
       </div>
     </article>
   
@@ -443,30 +451,21 @@
 <article class="card card-content">
   <header>
     <h1 class="post-title">
-      通过Gost建立Wss/Https代理
+      ImgHosting-On-IPFS
     </h1>
   </header>
   <div class="post-meta post-show-meta">
-    <time datetime="2022-08-21T11:10:32.000Z">
+    <time datetime="2022-09-26T04:34:31.000Z">
       <i 
         class="iconfont icon-calendar" 
         style="margin-right: 2px;">
       </i>
-      <span>2022-08-21</span>
+      <span>2022-09-26</span>
     </time>
     
-      <span class="dot"></span>
-      
-        <a 
-          href="/categories/202208/" 
-          class="post-meta-link">
-          202208
-        </a>
-      
-    
     
       <span class="dot"></span>
-      <span>345 字</span>
+      <span>913 字</span>
     
   </div>
   
@@ -481,18 +480,36 @@
         
           
           <a 
-            href="/tags/Gost/" 
+            href="/tags/Cloudflare/" 
             class="post-meta-link">
-            Gost
+            Cloudflare
           </a>
         
           
             <span class="dot"></span>
           
           <a 
-            href="/tags/CloudFlare/" 
+            href="/tags/IPFS/" 
             class="post-meta-link">
-            CloudFlare
+            IPFS
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/ImgHosting/" 
+            class="post-meta-link">
+            ImgHosting
+          </a>
+        
+          
+            <span class="dot"></span>
+          
+          <a 
+            href="/tags/Web3/" 
+            class="post-meta-link">
+            Web3
           </a>
         
       </div>
@@ -502,46 +519,79 @@
   <div 
     id="section" 
     class="post-content">
-    <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
-<li>一台能连接Github的VPS.</li>
-<li>一个域名.</li>
-</ul>
-<h2 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h2><p>本文中的Gost为v2版本.</p>
-<h1 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h1><h2 id="下载Gost"><a href="#下载Gost" class="headerlink" title="下载Gost."></a>下载Gost.</h2><blockquote>
-<p>可以前往<a target="_blank" rel="noopener" href="https://github.com/ginuerzh/gost/releases">Gost releases</a>获取最新版链接.</p>
+    <blockquote>
+<p>之前一直在用 <a href="picgo.github.io/PicGo-Doc">Picgo</a>+<a href="github.com">GitHub</a> 的方式托管图片，但是感觉不太好(其实就是想折腾)，于是找了一下其他自建图床的办法.</p>
 </blockquote>
-<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.4/gost-linux-amd64-2.11.4.gz</span><br><span class="line">#下载Gost源文件</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.4.gz</span><br><span class="line">#解压源文件</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.4 gost</span><br><span class="line">#重命名为gost，方便后续使用命令</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line">#使之可执行</span><br></pre>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><a href="ipfs.io">IPFS</a>的原理与BT类似，本质上都是P2P连接.</p>
+<p>但是IPFS可以通过各类公开网关直接访问其中的文件，格式为：</p>
+<pre class="highlight"><span class="line">[IPFS Gateway]/ipfs/[CID v0]</span><br><span class="line"></span><br><span class="line">[CID v1].ipfs.[IPFS Gateway]</span><br></pre>
 
-<h2 id="设置Https代理"><a href="#设置Https代理" class="headerlink" title="设置Https代理"></a>设置Https代理</h2><pre class="highlight"><span class="line">sudo nohup ./gost -L=https://username:password@:443?probe_resist=code:404\?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br></pre>
+<p>而每一个文件夹&#x2F;文件都对应有一个CID，这意味着，每次更改其中内容后其CID都会发生变化.</p>
+<p>于是我们可以用<a target="_blank" rel="noopener" href="https://docs.ipfs.tech/concepts/ipns/">IPNS</a>解决这个问题.</p>
+<blockquote>
+<p>可以理解为IPFS中的DNS，专门用于返回最新的CID.</p>
+</blockquote>
+<h1 id="IPFS部分"><a href="#IPFS部分" class="headerlink" title="IPFS部分"></a>IPFS部分</h1><p>虽然理论上可以直接在本地运行IPFS节点，从而上传文件到IPFS网络中.</p>
+<p>但是在实际使用时会有两个问题：</p>
+<ol>
+<li>国内网络不友好.</li>
+<li>若本地取消分享且其他节点没有备份，可能会在下一次自动删除中被清理掉，从而无法访问.</li>
+</ol>
+<p>对于这两个问题，我们可以使用第三方托管平台解决.</p>
+<p>这里我们使用 <a href="web3.storage">web3.storage</a>(以下简称<em>w3s</em>) 提供的服务.</p>
+<blockquote>
+<p>提供类似上传服务的网站还有很多，可以自行搜索.</p>
+</blockquote>
+<h2 id="w3s-Token"><a href="#w3s-Token" class="headerlink" title="w3s Token"></a>w3s Token</h2><p>首先登录进w3s网站.</p>
+<p><img src="/img.anemo.top/Img/Login-w3s.png" alt="Login-w3s" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img.anemo.top/Img/Login-w3s.png" class="lozad post-image"></p>
+<p>这里选择邮箱登录即可，当然，也可以使用临时邮箱来获取多个Token</p>
+<blockquote>
+<p>每个Token带有1TB容量，一般人一个就足够了吧qwq</p>
+</blockquote>
+<p>然后前往 <a href="web3.storage/tokens/?create=true">Token</a> 界面，输入Token名称以生成.</p>
+<p><img src="/img.anemo.top/Img/Token-w3s.jpg" alt="Token-w3s" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img.anemo.top/Img/Token-w3s.jpg" class="lozad post-image"></p>
+<p>这里将Token复制好，下一步需要用到.</p>
+<h2 id="w3s-Cli"><a href="#w3s-Cli" class="headerlink" title="w3s Cli"></a>w3s Cli</h2><p>通过网站上传文件无疑是很麻烦的，所以我们选择使用Cli工具，在终端中操作</p>
+<blockquote>
+<p>需要提前安装好 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js</a>.</p>
+</blockquote>
+<p>执行 <code>npm install -g @web3-storage/w3</code> 安装w3s Cli.</p>
+<p>随后在终端中执行 <code>w3 token</code> ,输出结果应该类似于：</p>
+<pre class="highlight"><span class="line">PS C:\Users\username&gt; w3 token</span><br><span class="line">√ Paste your API token for api.web3.storage · [YourToken]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">⁂ API token saved</span><br></pre>
+<p>此时你已登入w3s Cli, 输入 <code>w3 -h</code> 即可得到使用说明.</p>
+<p>以下是部分命令:</p>
+<pre class="highlight"><span class="line">w3 put /path/to/your/file -n [自定义文件名]</span><br><span class="line">#上传文件</span><br><span class="line"></span><br><span class="line">w3 list</span><br><span class="line">#查看已上传文件及其CID</span><br><span class="line"></span><br><span class="line">w3 name create</span><br><span class="line">#创建IPNS</span><br><span class="line"></span><br><span class="line">w3 name publish [IPNS ID] /ipfs/[CID]</span><br><span class="line">#将某个文件/文件夹添加到某个IPNS中</span><br></pre>
 
-<h2 id="设置Websocket-TLS隧道"><a href="#设置Websocket-TLS隧道" class="headerlink" title="设置Websocket+TLS隧道"></a>设置Websocket+TLS隧道</h2><pre class="highlight"><span class="line">sudo nohup ./gost -L=mwss://username:password@:443?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br></pre>
+<h2 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h2><p>假设你新建了一个名为Img的文件夹，并且添加了名为TEST1.jpg的文件，只需要执行：</p>
+<pre class="highlight"><span class="line">w3 put ./Img</span><br><span class="line">#将输出的CID记为α</span><br><span class="line"></span><br><span class="line">w3 name create</span><br><span class="line">#将输出的IPNS ID记为β</span><br><span class="line"></span><br><span class="line">w3 name publish β /ipfs/α</span><br><span class="line">#将Img文件夹对应到该IPNS ID</span><br></pre>
 
-<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><ul>
-<li><p>nohup：防止结束SSH后Gost程序终止.</p>
-</li>
-<li><p>probe_resist：防御探测，具体可见<a target="_blank" rel="noopener" href="https://v2.gost.run/probe_resist/">Gost Wiki</a>.</p>
-</li>
-<li><p>用户名&#x2F;密码及证书地址记得替换.</p>
-</li>
-</ul>
-<h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><h2 id="Https代理"><a href="#Https代理" class="headerlink" title="Https代理"></a>Https代理</h2><p>可以直接在大部分软件中使用.</p>
-<p>在clash中配置文件为：</p>
-<pre class="highlight"><span class="line">- &#123;name: &quot;Name&quot;, server: example.com, port: 443, type: http, username: &quot;username&quot;, password: &quot;password&quot;, tls: true &#125;</span><br></pre>
-
-<h2 id="Websocket-TLS隧道"><a href="#Websocket-TLS隧道" class="headerlink" title="Websocket+TLS隧道"></a>Websocket+TLS隧道</h2><pre class="highlight"><span class="line">./gost -L socks://:1080 -F mwss://username:password@example.com:443</span><br></pre>
-
+<p>此时，你便可以通过 β.ipns.[IPFS Gateway]&#x2F;Img&#x2F;TEST1.jpg 访问到该图片.</p>
+<p>若你想增添TEST2.jpg、TEST3.jpg……</p>
+<p>只需要重复第一步与第三步即可.</p>
+<h1 id="绑定域名-可选"><a href="#绑定域名-可选" class="headerlink" title="绑定域名 [可选]"></a>绑定域名 [可选]</h1><p>虽然这个时候已经能用了，但是IPNS ID那么长，看起来就不舒服 (bushi)</p>
+<p>所以我们可以借助 <a href="dnslink.org/">DNSlink</a> 功能，从我们自己的域名访问IPFS服务.</p>
+<p>首先我们要选定一个网关(可以在附录寻找)，并且设置好CNAME接入.</p>
 <ul>
-<li>推荐在WSL子系统中使用.</li>
-<li>规则可以在Windows中使用Clash来弥补.<ul>
-<li>如果你是在WSL子系统中运行Gost Client，在CFW中使用的地址为<code>localhost:1080</code>.</li>
+<li>假设你在使用 a.example.com</li>
 </ul>
-</li>
-</ul>
-<h1 id="CloudFlare-CDN"><a href="#CloudFlare-CDN" class="headerlink" title="CloudFlare CDN"></a>CloudFlare CDN</h1><ul>
-<li>CF Dashboard—SSL&#x2F;TLS—Overview 『<strong>Full</strong>』.</li>
-<li>Dashboard—DNS—Proxy status 『<strong>Proxied</strong>』.</li>
-</ul>
-<p><em>Note: 套CloudFlare后可能会导致速度变慢，若非线路不佳可不开启Proxied.</em></p>
+<p><img src="/img.anemo.top/Img/DNSlink1.jpg" alt="DNSlink1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img.anemo.top/Img/DNSlink1.jpg" class="lozad post-image"></p>
+<p>然后新建一个TXT Record，名为[_dnslink.a]，值为[dnslink&#x3D;&#x2F;ipns&#x2F;β]</p>
+<blockquote>
+<p>不知道β是什么？去看上文w (话说应该不会有人忘得这么快吧)</p>
+</blockquote>
+<p><img src="/img.anemo.top/Img/DNSlink2.jpg" alt="DNSlink2" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img.anemo.top/Img/DNSlink2.jpg" class="lozad post-image"></p>
+<p>到这里就已经完成咯</p>
+<p>你现在可以通过 <strong>a.example.com&#x2F;Img&#x2F;[FileName]</strong> 来访问图片.</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a href="ipfs.io">IPFS官方网关</a></p>
+<blockquote>
+<p>在大陆无法访问</p>
+</blockquote>
+<p><a href="cf-ipfs.io">Cloudflare网关</a></p>
+<p><a href="w3s.link">w3s网关</a></p>
+<blockquote>
+<p>上传完文件后，可以试着先通过w3s网关访问一次，让更多的服务器缓存到你的文件.</p>
+</blockquote>
+<p><a href="dweb.link">Dweb网关</a></p>
 
   </div>
   <div>
@@ -561,8 +611,8 @@
           <span style="font-weight: bold;">文章链接：</span><a 
             target="_blank" 
             rel="nofollow noopener noreferrer" 
-            href="https://blog.anemo.top/2022/08/21/Gost-Tunnel/">
-            https://blog.anemo.top/2022/08/21/Gost-Tunnel/
+            href="https://blog.anemo.top/2022/09/26/ImgHosting-On-IPFS/">
+            https://blog.anemo.top/2022/09/26/ImgHosting-On-IPFS/
           </a>
         </p>
         <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
@@ -572,20 +622,20 @@
 </article>
 <div class="nav">
   
-    <div class="nav-item-prev">
+  
+    <div class="nav-item-next">
       <a 
         href="/2022/09/13/TLS-Cert/" 
         class="nav-link">
-        <i class="iconfont icon-left nav-prev-icon"></i>
         <div>
-          <div class="nav-label">上一篇</div>
+          <div class="nav-label">下一篇</div>
           
             <div class="nav-title">获取TLS证书 </div>
           
         </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
       </a>
     </div>
-  
   
 </div>
 
@@ -635,7 +685,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPFS%E9%83%A8%E5%88%86"><span class="toc-text">IPFS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Token"><span class="toc-text">w3s Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Cli"><span class="toc-text">w3s Cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="toc-text">实际使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89"><span class="toc-text">绑定域名 [可选]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -649,7 +699,7 @@
     style="padding-right: 2px;">
   </i>目录
 </div>
-<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notice"><span class="toc-text">Notice</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Server"><span class="toc-text">Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDGost"><span class="toc-text">下载Gost.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEHttps%E4%BB%A3%E7%90%86"><span class="toc-text">设置Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEWebsocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">设置Websocket+TLS隧道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Client"><span class="toc-text">Client</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Https%E4%BB%A3%E7%90%86"><span class="toc-text">Https代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket-TLS%E9%9A%A7%E9%81%93"><span class="toc-text">Websocket+TLS隧道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CloudFlare-CDN"><span class="toc-text">CloudFlare CDN</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPFS%E9%83%A8%E5%88%86"><span class="toc-text">IPFS部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Token"><span class="toc-text">w3s Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#w3s-Cli"><span class="toc-text">w3s Cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="toc-text">实际使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D-%E5%8F%AF%E9%80%89"><span class="toc-text">绑定域名 [可选]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a></li></ol></li></ol>
     </article>
   
   
