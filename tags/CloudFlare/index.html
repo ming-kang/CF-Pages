@@ -28,7 +28,7 @@
     
       <meta 
         property="og:url" 
-        content="https://blog.anemo.top/tags/CloudFlare/index.html">
+        content="https://anemo.top/tags/Cloudflare/index.html">
     
     
       <meta 
@@ -46,11 +46,6 @@
   <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
   <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
   <link rel="preload" href="/css/main.css" as="style" >
-  
-    
-      <link rel="prefetch" href="//unpkg.com/@waline/client@v2/dist/waline.css" as="style">
-      <link rel="prefetch" href="//unpkg.com/@waline/client@v2/dist/waline.js" as="script">
-    
   
   <link rel="modulepreload" href="//instant.page/5.1.0">
   
@@ -152,9 +147,6 @@
   
   
   
-  
-    
-    <link rel="prefetch" href="//unpkg.com/@waline/client@v2/dist/waline.js" as="script">
   
   
 <meta name="generator" content="Hexo 6.2.0"></head>
@@ -439,7 +431,7 @@
             <main class="main-column">
               
 <div class="card card-content tag-page-card">
-  <div class="tags-page-title">标签&nbsp-&nbspCloudFlare</div>
+  <div class="tags-page-title">标签&nbsp-&nbspCloudflare</div>
 </div>
 <div class="archive-timeline">
   
@@ -451,28 +443,12 @@
     <div class="archive-timeline-item">
       <div class="archive-timeline-post">
         <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-09-13</div>
+          <div class="archive-timeline-post-date">2022-09-26</div>
           <div class="archive-timeline-post-content">
             <a 
-              href="/2022/09/13/TLS-Cert/" 
+              href="/2022/09/26/ImgHosting-On-IPFS/" 
               class="archive-timeline-post-item">
-              获取TLS证书
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2022-08-21</div>
-          <div class="archive-timeline-post-content">
-            <a 
-              href="/2022/08/21/Gost-Tunnel/" 
-              class="archive-timeline-post-item">
-              通过Gost建立Wss/Https代理
+              在IPFS上托管图片
             </a>
           </div>
         </div>
@@ -662,6 +638,25 @@
           var observer = lozad('.lozad', {
             load: function (el) {
               el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+  </body>
+</html>
+ibute('data-src')
             },
             loaded: function (el) {
               el.classList.add('loaded')
