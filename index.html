@@ -1,568 +1,765 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+  <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/Logo.jpg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/Logo.jpg">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/Logo.jpg">
-  <link rel="mask-icon" href="/img/Logo.jpg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"note.anemo.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="OwO">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ming.">
-<meta property="og:url" content="https://note.anemo.top/index.html">
-<meta property="og:site_name" content="Ming.">
-<meta property="og:description" content="OwO">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="明.">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="https://note.anemo.top/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Ming.</title>
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="OwO">
+  <link 
+    rel="icon" 
+    href="/img/Logo.jpg">
+  <title>Ming's Blog</title>
   
+    
+      <meta 
+        property="og:title" 
+        content="Ming&#39;s Blog">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://note.anemo.top/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/B.jpg">
+    
+    
+      <meta 
+        property="og:img" 
+        content="OwO">
+    
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
 
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/img/Logo.jpg" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">Ming's Blog</span>
+      </a>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Ming.</h1>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">自留地</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-  </ul>
-</nav>
-
-
-
-
-</div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
         
+          首页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          归档
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/B.jpg" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">明.</p>
+<p class="author-description">划水摸鱼真君</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>3</span>
+    <span>文章</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>2</span>
+    <span>分类</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>8</span>
+    <span>标签</span>
+  </a>
+</div>
+
+              </div>
+               <div class="sticky-tablet">
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>分类
+  </div>
+  <div class="categories-list">
+    
+      <a href="/categories/202208/">
+        <div class="categories-list-item">
+          202208
+          <span class="categories-list-item-badge">1</span>
+        </div>
+      </a>
+    
+      <a href="/categories/202209/">
+        <div class="categories-list-item">
+          202209
+          <span class="categories-list-item-badge">2</span>
+        </div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>热门标签
+  </div>
+  <div class="tags-list">
+    
+      <a 
+        href="/tags/CloudFlare/" 
+        title="CloudFlare">
+        <div class="tags-list-item">CloudFlare</div>
+      </a>
+    
+      <a 
+        href="/tags/Web3/" 
+        title="Web3">
+        <div class="tags-list-item">Web3</div>
+      </a>
+    
+      <a 
+        href="/tags/ImgHosting/" 
+        title="ImgHosting">
+        <div class="tags-list-item">ImgHosting</div>
+      </a>
+    
+      <a 
+        href="/tags/IPFS/" 
+        title="IPFS">
+        <div class="tags-list-item">IPFS</div>
+      </a>
+    
+      <a 
+        href="/tags/TLS/" 
+        title="TLS">
+        <div class="tags-list-item">TLS</div>
+      </a>
+    
+      <a 
+        href="/tags/Let-s-Encrypt/" 
+        title="Let's Encrypt">
+        <div class="tags-list-item">Let&#39;s Encrypt</div>
+      </a>
+    
+      <a 
+        href="/tags/Gost/" 
+        title="Gost">
+        <div class="tags-list-item">Gost</div>
+      </a>
+    
+      <a 
+        href="/tags/Cloudflare/" 
+        title="Cloudflare">
+        <div class="tags-list-item">Cloudflare</div>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+    <article class="card card-content widescreen-archive archive-widget">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">3</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2022/09/26/ImgHosting-On-IPFS/">
+        <h1 class="post-title">
+          在IPFS上托管图片
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+          
+20221001补充：web3.storage已经把Free Plan上限降到5GB了，不再推荐使用.可以试着通过
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2022-09-26T04:34:31.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2022-09-26</span>
+          </time>
+          
+            
+            
+              
+            
+            <span class="dot"></span>
+            
+              
+              <a 
+                href="/categories/202209/" 
+                class="post-meta-link">
+                202209
+              </a>
+            
+          
+        </div>
+        <a href="/2022/09/26/ImgHosting-On-IPFS/">继续阅读 </a>
+      </div>
+    </article>
   </div>
 
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2022/09/13/TLS-Cert/">
+        <h1 class="post-title">
+          获取TLS证书
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+          Let’s Encrypt 证...
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2022-09-13T14:13:10.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2022-09-13</span>
+          </time>
+          
+            
+            
+              
+            
+            <span class="dot"></span>
+            
+              
+              <a 
+                href="/categories/202209/" 
+                class="post-meta-link">
+                202209
+              </a>
+            
+          
         </div>
-        <!--/noindex-->
+        <a href="/2022/09/13/TLS-Cert/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="明."
-      src="/img/B.jpg">
-  <p class="site-author-name" itemprop="name">明.</p>
-  <div class="site-description" itemprop="description">OwO</div>
+  <div class="card">
+    
+    <article class="card card-content">
+      <a href="/2022/08/21/Proxies/">
+        <h1 class="post-title">
+          一些简单易用的网络代理
+        </h1>
+      </a>
+      <div class="card-excerpt">
+        
+          前言Q：给谁看?
+A：有使用网络代理需求，但是不想使用一键脚本的人.
+
+        
+      </div>
+      <div class="card-post-footer">
+        <div class="post-meta">
+          <time datetime="2022-08-21T11:10:32.000Z">
+            <i 
+              class="iconfont icon-calendar" 
+              style="margin-right: 2px;">
+            </i>
+            <span>2022-08-21</span>
+          </time>
+          
+            
+            
+              
+            
+            <span class="dot"></span>
+            
+              
+              <a 
+                href="/categories/202208/" 
+                class="post-meta-link">
+                202208
+              </a>
+            
+          
+        </div>
+        <a href="/2022/08/21/Proxies/">继续阅读 </a>
+      </div>
+    </article>
+  </div>
+
+
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>最近文章
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-26</div>
+        <a href="/2022/09/26/ImgHosting-On-IPFS/"><div class="recent-posts-item-content">在IPFS上托管图片</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-13</div>
+        <a href="/2022/09/13/TLS-Cert/"><div class="recent-posts-item-content">获取TLS证书</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-08-21</div>
+        <a href="/2022/08/21/Proxies/"><div class="recent-posts-item-content">一些简单易用的网络代理</div></a>
+      </div>
+    
+  </div>
 </div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">日志</span>
+  </article>
+  
+  
+    <article class="card card-content">
+      <div class="archive-card">
+  <div class="archive-card-header">
+    <i 
+      class="iconfont icon-wodebaobiao" 
+      style="padding-right: 2px;">
+    </i>归档
+  </div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+    
+      <a 
+        href="/archives/2022" 
+        class="archive-card-list-item">
+        2022
+        <span class="archive-card-list-item-badge">3</span>
+      </a>
+    
+  </div>
+</div>
+    </article>
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2022
+          
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          Ming's Blog
         </a>
       </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
       </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://note.anemo.top/2022/09/26/ImgHosting-On-IPFS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/B.jpg">
-      <meta itemprop="name" content="明.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ming.">
-      <meta itemprop="description" content="OwO">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ming.">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/ImgHosting-On-IPFS/" class="post-title-link" itemprop="url">在IPFS上托管图片</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-26 12:34:31" itemprop="dateCreated datePublished" datetime="2022-09-26T12:34:31+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-19 10:35:39" itemprop="dateModified" datetime="2022-10-19T10:35:39+08:00">2022-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/202209/" itemprop="url" rel="index"><span itemprop="name">202209</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>20221001补充：<a target="_blank" rel="noopener" href="https://web3.storage/">web3.storage</a>已经把Free Plan上限降到5GB了，不再推荐使用.<br>可以试着通过<a target="_blank" rel="noopener" href="https://transferkit.io/">TransferKit</a>继续，不过它只有网页版.</p>
-</blockquote>
-<blockquote>
-<p>之前一直在用 <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc">Picgo</a>+<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> 的方式托管图片，但是感觉不太好(其实就是想折腾)，于是找了一下其他自建图床的办法.</p>
-</blockquote>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><a target="_blank" rel="noopener" href="https://ipfs.io/">IPFS</a>的原理与BT类似，本质上都是P2P连接.</p>
-<p>但是IPFS可以通过各类公开网关直接访问其中的文件，格式为：</p>
-<pre class="highlight"><span class="line">[IPFS Gateway]/ipfs/[CID v0]</span><br><span class="line"></span><br><span class="line">[CID v1].ipfs.[IPFS Gateway]</span><br></pre>
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
 
-<p>而每一个文件夹&#x2F;文件都对应有一个CID，这意味着，每次更改其中内容后其CID都会发生变化.</p>
-<p>于是我们可以用<a target="_blank" rel="noopener" href="https://docs.ipfs.tech/concepts/ipns/">IPNS</a>解决这个问题.</p>
-<blockquote>
-<p>可以理解为IPFS中的DNS，专门用于返回最新的CID.</p>
-</blockquote>
-<h1 id="IPFS部分"><a href="#IPFS部分" class="headerlink" title="IPFS部分"></a>IPFS部分</h1><p>虽然理论上可以直接在本地运行IPFS节点，从而上传文件到IPFS网络中.</p>
-<p>但是在实际使用时会有两个问题：</p>
-<ol>
-<li>国内网络不友好.</li>
-<li>若本地取消分享且其他节点没有备份，可能会在下一次自动删除中被清理掉，从而无法访问.</li>
-</ol>
-<p>对于这两个问题，我们可以使用第三方托管平台解决.</p>
-<p>这里我们使用 <a target="_blank" rel="noopener" href="https://web3.storage/">web3.storage</a>(以下简称<em>w3s</em>) 提供的服务.</p>
-<blockquote>
-<p>提供类似上传服务的网站还有很多，可以自行搜索.</p>
-</blockquote>
-<h2 id="w3s-Token"><a href="#w3s-Token" class="headerlink" title="w3s Token"></a>w3s Token</h2><p>首先登录进w3s网站.</p>
-<p><img src="/img/Login-w3s.png" alt="Login-w3s" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/Login-w3s.png" class="lozad post-image"></p>
-<p>这里选择邮箱登录即可，当然，也可以使用临时邮箱来获取多个Token</p>
-<blockquote>
-<p>每个Token带有1TB容量，一般人一个就足够了吧qwq</p>
-</blockquote>
-<p>然后前往 <a target="_blank" rel="noopener" href="https://web3.storage/tokens/?create=true">Token</a> 界面，输入Token名称以生成.</p>
-<p><img src="/img/Token-w3s.jpg" alt="Token-w3s" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/Token-w3s.jpg" class="lozad post-image"></p>
-<p>这里将Token复制好，下一步需要用到.</p>
-<h2 id="w3s-Cli"><a href="#w3s-Cli" class="headerlink" title="w3s Cli"></a>w3s Cli</h2><p>通过网站上传文件无疑是很麻烦的，所以我们选择使用Cli工具，在Terminal中操作</p>
-<blockquote>
-<p>需要提前安装好 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js</a>.</p>
-</blockquote>
-<p>执行 <code>npm install -g @web3-storage/w3</code> 安装w3s Cli.</p>
-<p>随后在Terminal中执行 <code>w3 token</code> ,输出结果应该类似于：</p>
-<pre class="highlight"><span class="line">PS C:\Users\username&gt; w3 token</span><br><span class="line">√ Paste your API token for api.web3.storage · [YourToken]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">⁂ API token saved</span><br></pre>
-<p>此时你已登入w3s Cli, 输入 <code>w3 -h</code> 即可得到使用说明.</p>
-<p>以下是部分命令:</p>
-<pre class="highlight"><span class="line">w3 put /path/to/your/file -n [自定义文件名]</span><br><span class="line">#上传文件</span><br><span class="line"></span><br><span class="line">w3 list</span><br><span class="line">#查看已上传文件及其CID</span><br><span class="line"></span><br><span class="line">w3 name create</span><br><span class="line">#创建IPNS</span><br><span class="line"></span><br><span class="line">w3 name publish [IPNS ID] /ipfs/[CID]</span><br><span class="line">#将某个文件/文件夹添加到某个IPNS中</span><br></pre>
-
-<h2 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h2><p>假设你新建了一个名为Img的文件夹，并且添加了名为TEST1.jpg的文件，只需要执行：</p>
-<pre class="highlight"><span class="line">w3 put ./Img</span><br><span class="line">#将输出的CID记为α</span><br><span class="line"></span><br><span class="line">w3 name create</span><br><span class="line">#将输出的IPNS ID记为β</span><br><span class="line"></span><br><span class="line">w3 name publish β /ipfs/α</span><br><span class="line">#将Img文件夹对应到该IPNS ID</span><br></pre>
-
-<p>此时，你便可以通过 β.ipns.[IPFS Gateway]&#x2F;Img&#x2F;TEST1.jpg 访问到该图片.</p>
-<p>若你想增添TEST2.jpg、TEST3.jpg……</p>
-<p>只需要重复第一步与第三步即可.</p>
-<h1 id="绑定域名-可选"><a href="#绑定域名-可选" class="headerlink" title="绑定域名 [可选]"></a>绑定域名 [可选]</h1><p>虽然这个时候已经能用了，但是IPNS ID那么长，看起来就不舒服 (bushi)</p>
-<p>所以我们可以借助 <a target="_blank" rel="noopener" href="https://dnslink.org/">DNSlink</a> 功能，从我们自己的域名访问IPFS服务.</p>
-<p>首先我们要选定一个网关(可以在附录寻找)，并且设置好CNAME接入.</p>
-<ul>
-<li>假设你在使用 a.example.com</li>
-</ul>
-<p><img src="/img/DNSlink1.jpg" alt="DNSlink1" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/DNSlink1.jpg" class="lozad post-image"></p>
-<p>然后新建一个TXT Record，名为[_dnslink.a]，值为[dnslink&#x3D;&#x2F;ipns&#x2F;β]</p>
-<blockquote>
-<p>不知道β是什么？去看上文w (话说应该不会有人忘得这么快吧)</p>
-</blockquote>
-<p><img src="/img/DNSlink2.jpg" alt="DNSlink2" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="/img/DNSlink2.jpg" class="lozad post-image"></p>
-<p>到这里就已经完成咯</p>
-<p>你现在可以通过 <strong>a.example.com&#x2F;Img&#x2F;[FileName]</strong> 来访问图片.</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a target="_blank" rel="noopener" href="https://ipfs.io/">IPFS官方网关</a></p>
-<blockquote>
-<p>在大陆无法访问</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://cf-ipfs.com/">Cloudflare网关</a></p>
-<p><a target="_blank" rel="noopener" href="https://w3s.link/">w3s网关</a></p>
-<blockquote>
-<p>上传完文件后，可以试着先通过w3s网关访问一次，让更多的服务器缓存到你的文件.</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://dweb.link/">Dweb网关</a></p>
-
-      
-    </div>
-
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+     
+    <script src="/js/main.js"></script> 
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
     
     
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://note.anemo.top/2022/09/13/TLS-Cert/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/B.jpg">
-      <meta itemprop="name" content="明.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ming.">
-      <meta itemprop="description" content="OwO">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ming.">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/13/TLS-Cert/" class="post-title-link" itemprop="url">获取TLS证书</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-13 22:13:10" itemprop="dateCreated datePublished" datetime="2022-09-13T22:13:10+08:00">2022-09-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-09-19 15:04:30" itemprop="dateModified" datetime="2022-09-19T15:04:30+08:00">2022-09-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/202209/" itemprop="url" rel="index"><span itemprop="name">202209</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Let’s-Encrypt-证书"><a href="#Let’s-Encrypt-证书" class="headerlink" title="Let’s Encrypt 证书"></a>Let’s Encrypt 证书</h1><ul>
-<li><p>以Debian为例，通过certbot申请证书.</p>
-<pre class="highlight"><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt install snapd</span><br><span class="line"></span><br><span class="line">sudo snap install --classic certbot</span><br><span class="line"></span><br><span class="line">sudo ln -s /snap/bin/certbot /usr/bin/certbot</span><br><span class="line"></span><br><span class="line">sudo certbot certonly --standalone</span><br><span class="line"># 申请证书</span><br><span class="line"></span><br><span class="line">sudo certbot renew --dry-run</span><br><span class="line"># 测试自动更新证书</span><br></pre>
-</li>
-<li><p>完成了，现在你的证书应该处于:</p>
-<pre class="highlight"><span class="line">/etc/letsencrypt/live/example.com/fullchain.pem</span><br><span class="line">/etc/letsencrypt/live/example.com/privkey.pem</span><br></pre></li>
-</ul>
-<h1 id="CloudFlare-Origin-证书"><a href="#CloudFlare-Origin-证书" class="headerlink" title="CloudFlare Origin 证书"></a>CloudFlare Origin 证书</h1><ul>
-<li>注意,<strong>该证书只能被CloudFlare识别为可信</strong>,用于CDN与源站之间.</li>
-<li>Dashboard—SSL&#x2F;TLS—Orgin Server即可生成证书.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://note.anemo.top/2022/08/21/Proxies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/img/B.jpg">
-      <meta itemprop="name" content="明.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ming.">
-      <meta itemprop="description" content="OwO">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ming.">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/21/Proxies/" class="post-title-link" itemprop="url">一些简单易用的网络代理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-21 19:10:32" itemprop="dateCreated datePublished" datetime="2022-08-21T19:10:32+08:00">2022-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-10-27 18:41:44" itemprop="dateModified" datetime="2022-10-27T18:41:44+08:00">2022-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/202208/" itemprop="url" rel="index"><span itemprop="name">202208</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Q：给谁看?</p>
-<p>A：有使用网络代理需求，但是不想使用一键脚本的人.</p>
-<h1 id="Gost"><a href="#Gost" class="headerlink" title="Gost"></a>Gost</h1><h2 id="下载Gost"><a href="#下载Gost" class="headerlink" title="下载Gost."></a>下载Gost.</h2><blockquote>
-<p>可以前往<a target="_blank" rel="noopener" href="https://github.com/ginuerzh/gost/releases">Releases页面</a>获取最新版链接.</p>
-</blockquote>
-<pre class="highlight"><span class="line">wget https://github.com/ginuerzh/gost/releases/download/v2.11.4/gost-linux-amd64-2.11.4.gz</span><br><span class="line">#下载Gost源文件</span><br><span class="line"></span><br><span class="line">gzip -d gost-linux-amd64-2.11.4.gz</span><br><span class="line">#解压源文件</span><br><span class="line"></span><br><span class="line">mv gost-linux-amd64-2.11.4 gost</span><br><span class="line">#重命名为gost，方便后续使用命令</span><br><span class="line"></span><br><span class="line">chmod +x gost</span><br><span class="line">#使之可执行</span><br></pre>
-
-<h2 id="HTTPS代理"><a href="#HTTPS代理" class="headerlink" title="HTTPS代理"></a>HTTPS代理</h2><pre class="highlight"><span class="line">//服务器端</span><br><span class="line">sudo nohup ./gost -L=https://username:password@:443?probe_resist=code:404\?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br><span class="line"></span><br><span class="line">//客户端</span><br><span class="line">./gost -L socks://:1080 -F https://username:password@example.com:443</span><br></pre>
-
-<p>当然，你也可以在Clash中使用，配置文件如下：</p>
-<pre class="highlight"><span class="line">- name: &quot;Name&quot;</span><br><span class="line">    server: example.com</span><br><span class="line">    port: 443</span><br><span class="line">    type: http</span><br><span class="line">    username: &quot;username</span><br><span class="line">    password: &quot;password&quot;</span><br><span class="line">    tls: true</span><br></pre>
-
-<h2 id="WSS代理"><a href="#WSS代理" class="headerlink" title="WSS代理"></a>WSS代理</h2><pre class="highlight"><span class="line">//服务器端</span><br><span class="line">sudo nohup ./gost -L=mwss://username:password@:443?cert=/path/to/your/cert/file\&amp;key=/path/to/your/key/file</span><br><span class="line"></span><br><span class="line">//客户端</span><br><span class="line">./gost -L socks://:1080 -F mwss://username:password@example.com:443</span><br></pre>
-
-
-<h3 id="CloudFlare-CDN"><a href="#CloudFlare-CDN" class="headerlink" title="CloudFlare CDN"></a>CloudFlare CDN</h3><ul>
-<li>CF Dashboard—SSL&#x2F;TLS—Overview 『<strong>Full</strong>』.</li>
-<li>Dashboard—DNS—Proxy status 『<strong>Proxied</strong>』.</li>
-</ul>
-<h1 id="Hysteria"><a href="#Hysteria" class="headerlink" title="Hysteria"></a>Hysteria</h1><h2 id="下载Hysteria"><a href="#下载Hysteria" class="headerlink" title="下载Hysteria"></a>下载Hysteria</h2><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><pre class="highlight"><span class="line">//服务器端</span><br><span class="line">&#123;</span><br><span class="line">    &quot;listen&quot;: &quot;:YourPort&quot;,</span><br><span class="line">    &quot;cert&quot;: &quot;/path/to/your/cert&quot;,</span><br><span class="line">    &quot;key&quot;: &quot;/path/to/your/key&quot;,</span><br><span class="line">    &quot;obfs&quot;: &quot;YourPassword&quot;,</span><br><span class="line">    &quot;up_mbps&quot;: 100,</span><br><span class="line">    &quot;down_mbps&quot;: 100</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">//客户端</span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: &quot;your.domain.com:YourPort&quot;,</span><br><span class="line">    &quot;obfs&quot;: &quot;YourPassword&quot;,</span><br><span class="line">    &quot;up_mbps&quot;: 50,</span><br><span class="line">    &quot;down_mbps&quot;: 100,</span><br><span class="line">    &quot;socks5&quot;: &#123;</span><br><span class="line">      &quot;listen&quot;: &quot;YourLocalSocks5Port&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">明.</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-</body>
+  </body>
 </html>
